@@ -1,0 +1,166 @@
+﻿<%@ Master Language="VB" CodeFile="MasterPage.master.vb" Inherits="MasterPage" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="StyleSheet.css" rel="stylesheet" type="text/css" />
+    <link href="Print.css" rel="stylesheet" type="text/css" media="print" />
+</head>
+<body>
+    <form id="form1" runat="server" clientidmode="Predictable">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+        <Scripts>
+            <asp:ScriptReference Path="~/FixFocus.js" />
+        </Scripts>
+    </asp:ScriptManager>
+    <div class="outline">
+        <div class="logo noPrint"><img src="Images/logo.png" /></div>
+        <div class="inner">
+            <div class="headerPanel noPrint">
+                <div class="centreContent">
+                    <table width="100%" border="0" cellpadding="5" cellspacing="0" style="background:url(images/headerSwooshTop.gif) no-repeat 10% bottom; padding-left:10px;">
+                        <tr>
+                            <td colspan="2" style="padding-left: 165px">
+                                <table cellpadding="0" cellspacing="0" class="white text" style="float:right;">
+                                    <tr>
+                                        <td>
+                                            <span class="smaller">QuickFind:</span><br />
+                                            <asp:TextBox ID="JumpTo" runat="server" CssClass="small" Width="65px" ToolTip="Enter Keywords or an Incident ID here and press Go"></asp:TextBox>
+                                            <ajaxToolkit:TextBoxWatermarkExtender
+                                                ID="TBWE1" runat="server" TargetControlID="JumpTo" 
+                                                WatermarkText="Incident ID" WatermarkCssClass="watermark small">
+                                            </ajaxToolkit:TextBoxWatermarkExtender>
+                                        </td>
+                                        <td valign="bottom">
+                                            <asp:Button ID="Go" runat="server" Text="Go" CssClass="small" />
+                                        </td>
+                                    </tr>
+                                </table>
+                                <table cellpadding="0" cellspacing="3">
+                                    <tr style="height:40px;">
+                                        <td align="center" style="width: 16px;">
+                                            <asp:HyperLink ID="NewImage" runat="server"
+                                                ImageUrl="~/Images/new_16.png" NavigateUrl="Incident.aspx?Action=Insert" style="padding-top:6px;" />
+                                        </td>
+                                        <td align="center" width="width:75px;">
+                                            <asp:HyperLink ID="NewLink" runat="server" CssClass="white" 
+                                                NavigateUrl="Incident.aspx?Action=Insert">New Ticket</asp:HyperLink>
+                                        </td>
+                                        <td align="center" style="width: 16px; height: 25px;" class="white">
+                                            &gt;</td>
+                                        <td align="center" style="width: 16px;">
+                                            <asp:HyperLink ID="SearchImage" runat="server" ImageUrl="~/Images/search_16.png" 
+                                                NavigateUrl="Search.aspx" style="padding-top:6px;" />
+                                        </td>
+                                        <td style="width: 40px;">
+                                            <asp:HyperLink ID="SearchLink" runat="server" CssClass="white" NavigateUrl="Search.aspx">Search</asp:HyperLink>
+                                        </td>
+                                        <td align="center" style="width: 16px; height: 25px;" class="white">
+                                            &gt;</td>
+                                        <td align="center" style="width: 16px;">
+                                            <asp:HyperLink ID="ReportsImage" runat="server" ImageUrl="~/Images/note_edit_16.png" 
+                                                NavigateUrl="ReportPage.aspx" style="padding-top:6px;" />
+                                        </td>
+                                        <td style="width: 47px;">
+                                            <asp:HyperLink ID="ReportsLink" runat="server" CssClass="white" 
+                                                NavigateUrl="ReportPage.aspx">Reports</asp:HyperLink>
+                                        </td>
+                                        <td align="center" style="width: 16px; height: 25px;" class="white">
+                                            &gt;</td>
+                                            <td align="center" style="width: 16px;">
+                                            <asp:HyperLink ID="ChartsImage" runat="server" ImageUrl="~/Images/chart_16.png" 
+                                                NavigateUrl="Charts.aspx" style="padding-top:6px;" />
+                                        </td>
+                                        <td style="width: 75px;">
+                                            <asp:HyperLink ID="ChartsLink" runat="server" CssClass="white" 
+                                                NavigateUrl="Charts.aspx">Charts</asp:HyperLink>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="headerBottom noPrint">
+                <div class="centreContent">
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="background:url(images/headerSwooshBottom.gif) no-repeat 10%; padding-left:10px;">
+                        <tr>
+                            <td>
+                                <a href="LocationAdmin.aspx" class="smaller grey" style="float:right">Location Administration</a>
+                                <a href="CategoryAdmin.aspx" class="smaller grey" style="float:right">Category Administration<br /></a>
+                                <table cellpadding="0" cellspacing="0" class="white text" style="margin-right:12px;">
+                                    <tr>
+                                        <td valign="top" style="padding-right:5px;">
+                                            <asp:Panel ID="P1" runat="server">
+                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                    <tr>
+                                                        <td style="padding-right:5px; width:65px;">
+                                                            <asp:Label ID="Today" runat="server" CssClass="small" /><br /><asp:Label ID="Yesterday" runat="server" CssClass="smaller grey smallLineHeight" />
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </asp:Panel>
+                                        </td>
+                                        <td valign="top">
+                                            <asp:Panel ID="P2" runat="server" style="padding-top:2px; padding-right:5px;">
+                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                    <tr>
+                                                        <td style="padding-right:8px; width:70px;">
+                                                            <asp:Label ID="ThisWeek" runat="server" CssClass="small" /><br />
+                                                            <asp:Label ID="LastWeek" runat="server" CssClass="smaller grey smallLineHeight" />
+                                                        </td>
+                                                        <td style="padding-right:8px; width:75px;">
+                                                            <asp:Label ID="ThisMonth" runat="server" CssClass="small" /><br />
+                                                            <asp:Label ID="LastMonth" runat="server" CssClass="smaller grey smallLineHeight" />
+                                                        </td>
+                                                        <td style="padding-right:10px; width:70px;">
+                                                            <asp:Label ID="ThisYear" runat="server" CssClass="small" /><br />
+                                                            <asp:Label ID="LastYear" runat="server" CssClass="smaller grey smallLineHeight" />
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </asp:Panel>
+                                        </td>
+                                        <%--                                <td valign="top">
+                                            <asp:HyperLink ID="More" runat="server" CssClass="smaller" style="float:right" />
+                                            <ajaxToolkit:CollapsiblePanelExtender ID="CPE1" runat="server" TargetControlID="P2" CollapseControlID="More" Collapsed="True" CollapsedText="[more]" ExpandControlID="More" ExpandDirection="Horizontal" ExpandedText="[close]" TextLabelID="More" />
+                                        </td>
+        --%>                            </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <table cellpadding="0" cellspacing="5" style="width:100%">
+                    <tr>
+                        <td valign="top" style="padding-left:10px;">
+                <asp:ContentPlaceHolder id="C" runat="server">       
+                </asp:ContentPlaceHolder>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            &nbsp;</td>
+                    </tr>
+                </table>
+            <asp:Table ID="FooterTable" runat="server" Width="99%" CellPadding="3" CssClass="lightGrey small">
+                <asp:TableRow runat="server">
+                    <asp:TableCell ID="TC1" runat="server" HorizontalAlign="Right" Width="50%">QuickTicket ICT Log v1.3 &copy;2011 </asp:TableCell>
+                    <asp:TableCell runat="server" VerticalAlign="Bottom" Width="30px">
+                        <asp:Image ID="CWSoftImage" runat="server" style="" ImageUrl="Images/cwsoft.jpg" 
+                            ToolTip="CWsoft - In-house software production from CWMGP" Width="20px" />
+                    </asp:TableCell>
+                    <asp:TableCell runat="server" Width="50%">Careers Wales Mid Glamorgan &amp; Powys</asp:TableCell>
+                </asp:TableRow>
+            </asp:Table>
+            <br />
+        </div>
+    </div>
+    </form>
+</body>
+</html>

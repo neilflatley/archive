@@ -1,0 +1,12 @@
+﻿.noPrint
+{
+     display: none;
+}
+.avoidPgBrk
+{
+    page-break-before:avoid;
+    page-break-after: auto;
+}
+.allowPgBrk
+{
+    page-break-before:auto;
